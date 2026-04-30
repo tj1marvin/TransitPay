@@ -1,0 +1,60 @@
+{
+  "entities": {
+    "user": {
+      "title": "User",
+      "description": "User profile with wallet balance",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "balance": { "type": "number", "description": "Wallet balance in currency units" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "balance"]
+    },
+    "route": {
+      "title": "Bus Route",
+      "description": "Available transit routes",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "from": { "type": "string" },
+        "to": { "type": "string" },
+        "price": { "type": "number" },
+        "departureTime": { "type": "string" },
+        "busNumber": { "type": "string" },
+        "duration": { "type": "string" }
+      },
+      "required": ["id", "from", "to", "price", "departureTime"]
+    },
+    "ticket": {
+      "title": "Ticket",
+      "description": "Purchased transit ticket",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "routeId": { "type": "string" },
+        "purchaseDate": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["active", "used", "cancelled"] },
+        "qrCodeData": { "type": "string" }
+      },
+      "required": ["id", "userId", "routeId", "status"]
+    }
+  },
+  "firestore": {
+    "users": {
+      "schema": "user",
+      "description": "User profiles"
+    },
+    "routes": {
+      "schema": "route",
+      "description": "Available bus routes"
+    },
+    "tickets": {
+      "schema": "ticket",
+      "description": "Individual ticket records"
+    }
+  }
+}

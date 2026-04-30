@@ -1,0 +1,6 @@
+{
+  "name": "TransitPay",
+  "description": "A modern bus payment and ticketing system for seamless urban travel.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": []
+}
